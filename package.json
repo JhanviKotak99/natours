@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Learning Mongo, Node, express",
   "main": "index.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js",
