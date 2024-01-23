@@ -24,7 +24,7 @@ if (mapBox) {
   displayMap(locations);
 }
 
-console.log('hello from parcel');
+//console.log('hello from parcel');
 
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
@@ -32,7 +32,7 @@ if (loginForm) {
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    console.log(email, password);
+    //console.log(email, password);
     login(email, password);
   });
 }
@@ -47,7 +47,7 @@ if (signUpForm) {
     const confirmPassword = document.getElementById(
       'signUpConfirmPassword',
     ).value;
-    console.log(name, email, password);
+    //console.log(name, email, password);
     signUp(name, email, password, confirmPassword);
   });
 }
@@ -87,7 +87,7 @@ if (userPasswordForm)
     const oldPassword = document.getElementById('password-current').value;
     const newPassword = document.getElementById('password').value;
     const confirmPassword = document.getElementById('password-confirm').value;
-    console.log(oldPassword, newPassword, confirmPassword);
+    //console.log(oldPassword, newPassword, confirmPassword);
     await updateSettings(
       { oldPassword, newPassword, confirmPassword },
       'password',

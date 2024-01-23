@@ -44,7 +44,7 @@ exports.resizeTourImages = catchAsync(async (req, res, next) => {
     //1) COVER IMAGE
     if (req.files.imageCover) {
       req.body.imageCover = `tour-${req.params.id}-${Date.now()}-cover.jpeg`;
-      console.log(req.files.imageCover[0]);
+      //console.log(req.files.imageCover[0]);
       await sharp(req.files.imageCover[0].buffer)
         .resize(2000, 1333)
         .toFormat('jpeg')
@@ -68,7 +68,7 @@ exports.resizeTourImages = catchAsync(async (req, res, next) => {
           req.body.images.push(filename);
         }),
       );
-      console.log(req.body);
+      //console.log(req.body);
     }
   }
 

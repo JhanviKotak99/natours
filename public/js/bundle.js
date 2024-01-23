@@ -10319,12 +10319,12 @@
   };
 
   // public/js/login.js
-  console.log("login script loaded");
   var login = async (email, password) => {
     try {
       const res = await axios_default({
         method: "POST",
-        url: "http://127.0.0.1:3000/api/v1/users/login",
+        //url: 'http://127.0.0.1:3000/api/v1/users/login',
+        url: "/api/v1/users/login",
         data: {
           email,
           password
@@ -10342,14 +10342,12 @@
   };
   var logout = async () => {
     try {
-      console.log("in logout");
       const res = await axios_default({
         method: "GET",
-        url: "http://127.0.0.1:3000/api/v1/users/logout"
+        //url: 'http://127.0.0.1:3000/api/v1/users/logout',
+        url: "/api/v1/users/logout"
       });
-      console.log(res);
       if (res.data.status === "success") {
-        console.log(res.status);
         location.assign("/");
       }
     } catch (err) {
@@ -10359,9 +10357,8 @@
 
   // public/js/updateSettings.js
   var updateSettings = async (data, type) => {
-    console.log("Sending data:", data);
     try {
-      const url = type === "password" ? "http://127.0.0.1:3000/api/v1/users/updatePassword" : "http://127.0.0.1:3000/api/v1/users/updateMe";
+      const url = type === "password" ? "/api/v1/users/updatePassword" : "/api/v1/users/updateMe";
       const res = await axios_default({
         method: "PATCH",
         url,
@@ -10381,12 +10378,11 @@
       const stripe = Stripe(
         "pk_test_51ObIXoSIEBhQYjdVjhh9pe1AmqWqlQlbzJJZNx3CeSaDFZKhVaflGTrFdpGXtwf4B5BoOTJkcuO3elp4qEThEDMH008YqHxDFb"
       );
-      console.log("in book tour method");
       const session = await axios_default({
         method: "GET",
-        url: `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
+        //url: `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`,
+        url: `/api/v1/bookings/checkout-session/${tourId}`
       });
-      console.log(session);
       await stripe.redirectToCheckout({
         sessionId: session.data.session.id
       });
@@ -10397,7 +10393,6 @@
   };
 
   // public/js/signup.js
-  console.log("login script loaded");
   var signUp = async (name, email, password, confirmPassword) => {
     try {
       const res = await axios_default({
@@ -10433,13 +10428,11 @@
     const locations = JSON.parse(mapBox.dataset.locations);
     displayMap(locations);
   }
-  console.log("hello from parcel");
   if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
-      console.log(email, password);
       login(email, password);
     });
   }
@@ -10452,7 +10445,6 @@
       const confirmPassword = document.getElementById(
         "signUpConfirmPassword"
       ).value;
-      console.log(name, email, password);
       signUp(name, email, password, confirmPassword);
     });
   }
@@ -10472,7 +10464,6 @@
       const oldPassword = document.getElementById("password-current").value;
       const newPassword = document.getElementById("password").value;
       const confirmPassword = document.getElementById("password-confirm").value;
-      console.log(oldPassword, newPassword, confirmPassword);
       await updateSettings(
         { oldPassword, newPassword, confirmPassword },
         "password"

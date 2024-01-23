@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { showAlert } from './alerts';
 
-console.log('login script loaded');
+//console.log('login script loaded');
 
 export const signUp = async (name, email, password, confirmPassword) => {
   try {
