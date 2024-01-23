@@ -66,7 +66,7 @@ exports.getSignupForm = catchAsync(async (req, res) => {
       'connect-src "self" https://cdnjs.cloudflare.com',
       //'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
     )
-    .render('signup', {
+    .render('signUp', {
       title: 'SignUp',
     });
 });
