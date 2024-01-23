@@ -50,7 +50,7 @@ exports.getLoginForm = catchAsync(async (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      'connect-src "self" https://cdnjs.cloudflare.com',
+      'connect-src "self" https://natours-d0f9.onrender.com/ https://cdnjs.cloudflare.com',
       //'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
     )
     .render('login', {
@@ -63,7 +63,7 @@ exports.getSignupForm = catchAsync(async (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      'connect-src "self" https://cdnjs.cloudflare.com',
+      'connect-src "self" https://natours-d0f9.onrender.com/ https://cdnjs.cloudflare.com',
       //'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
     )
     .render('signUp', {
@@ -77,7 +77,7 @@ exports.getAcount = catchAsync(async (req, res) => {
     .set(
       'Content-Security-Policy',
       //'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
-      'connect-src "self" https://cdnjs.cloudflare.com',
+      'connect-src "self" https://natours-d0f9.onrender.com/ https://cdnjs.cloudflare.com',
     )
     .render('account', {
       title: 'Your account',

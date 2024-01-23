@@ -146,7 +146,7 @@ app.use(
           'https://*.cloudflare.com/',
           'https://bundle.js:*',
           'ws://127.0.0.1:*/',
-          'https://natours-d0f9.onrender.com/',
+          'wss://natours-d0f9.onrender.com/',
         ],
         upgradeInsecureRequests: [],
       },
