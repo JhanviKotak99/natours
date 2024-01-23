@@ -63,8 +63,8 @@ exports.getSignupForm = catchAsync(async (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      //"connect-src 'self' https://cdnjs.cloudflare.com",
-      'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
+      'connect-src "self" https://cdnjs.cloudflare.com',
+      //'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
     )
     .render('signup', {
       title: 'SignUp',
@@ -76,7 +76,8 @@ exports.getAcount = catchAsync(async (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
+      //'connect-src "self" http://127.0.0.1:3000 https://cdnjs.cloudflare.com',
+      'connect-src "self" https://cdnjs.cloudflare.com',
     )
     .render('account', {
       title: 'Your account',

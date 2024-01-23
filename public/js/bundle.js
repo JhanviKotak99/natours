@@ -10397,7 +10397,8 @@
     try {
       const res = await axios_default({
         method: "POST",
-        url: "http://127.0.0.1:3000/api/v1/users/signUp",
+        //url: 'http://127.0.0.1:3000/api/v1/users/signUp',
+        url: "/api/v1/users/signUp",
         data: {
           name,
           email,
