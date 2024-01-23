@@ -40,7 +40,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      'connect-src https://*.tiles.mapbox.com https://api.mapbox.com https://events.mapbox.com',
+      'connect-src https://natours-ikpc.onrender.com https://*.tiles.mapbox.com https://api.mapbox.com https://events.mapbox.com',
     )
     .json({
       status: 'success',
