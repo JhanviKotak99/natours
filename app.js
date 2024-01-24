@@ -27,7 +27,21 @@ app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL MIDDLEWARES
 
+//Implement cors
 app.use(cors());
+//it sets Access-Control-Allow-Origin *
+
+//for restricting only particular requests
+//eg: only our websit should be able to make api calls
+// app.use(
+//   cors({
+//     origin: 'https://natours-ikpc.onrender.com',
+//   }),
+// );
+
+//browser first makes a 'options' request in order to check if request is safe
+//need to configure for delete, patch, put
+app.options('*', cors());
 
 //Serving static files
 //app.use(express.static(`${__dirname}/public`));
