@@ -13,7 +13,7 @@ const signToken = (id) => {
   return token;
 };
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user._id);
 
   const cookieOptions = {
@@ -23,9 +23,10 @@ const createSendToken = (user, statusCode, res) => {
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
     path: '/',
+    secure: req.secure || req.headers('x-forwarded-proto') === 'https',
   };
 
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  //if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
 
@@ -60,7 +61,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   //console.log(url);
   await new Email(newUser, url).sendWelcome();
 
-  createSendToken(newUser, 201, res);
+  createSendToken(newUser, 201, req, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -80,7 +81,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   //3)if everything is okay, send token
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
 
 exports.logout = async (req, res, next) => {
@@ -89,9 +90,10 @@ exports.logout = async (req, res, next) => {
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
     path: '/',
+    secure: req.secure || req.headers('x-forwarded-proto') === 'https',
   };
 
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  //if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', 'loggedout', cookieOptions);
 
@@ -261,7 +263,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   //3)update changedPasswordAt property for user
 
   //4)log the user in, send jwt token to user
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
   next();
 });
 
@@ -285,7 +287,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
 
   //4)login, send jwt
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 
   next();
 });
